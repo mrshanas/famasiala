@@ -1,3 +1,4 @@
+import 'package:famasiala/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -7,8 +8,13 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home screen'),
+        elevation: 0.0,
+        leading: const Icon(Icons.arrow_back_sharp),
+        title: const Text(
+          'Home screen',
+        ),
         centerTitle: true,
+        backgroundColor: kPrimaryColor,
       ),
     );
   }

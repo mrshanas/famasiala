@@ -8,18 +8,22 @@ class Input extends StatelessWidget {
     required this.placeholder,
     this.password = false,
     this.suffixIcon,
+    this.keyboard,
   });
 
   final String placeholder;
   final bool password;
   final Widget? suffixIcon;
+  final TextInputType? keyboard;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      padding: const EdgeInsets.symmetric(horizontal: 20.0),
       child: TextField(
+        keyboardType: keyboard,
         obscureText: password,
+        obscuringCharacter:  '●',
         decoration: InputDecoration(
           hintText: placeholder,
           suffixIcon: suffixIcon,
@@ -28,12 +32,15 @@ class Input extends StatelessWidget {
           focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(
               color: kPrimaryColor,
+              width: 3.0,
             ),
+            borderRadius: BorderRadius.circular(15.0),
           ),
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(
               color: Colors.grey[200]!,
             ),
+            borderRadius: BorderRadius.circular(15.0),
           ),
         ),
       ),
