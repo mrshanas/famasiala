@@ -1,3 +1,4 @@
+import 'package:famasiala/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:otp_text_field/otp_field.dart';
 import 'package:otp_text_field/otp_field_style.dart';
@@ -13,6 +14,10 @@ class OTPScreen extends StatelessWidget {
     print("Completed: " + pin);
   }
 
+  void _onOTPChanged(String pin) {
+    print("Changed: " + pin);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,9 +26,12 @@ class OTPScreen extends StatelessWidget {
         backgroundColor: Colors.white,
         centerTitle: true,
         elevation: 0,
-        leading: const Icon(
-          Icons.arrow_back_sharp,
-          color: Colors.black,
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back_rounded,
+            color: Colors.black,
+          ),
+          onPressed: () {},
         ),
         title: const Text(
           'Verification',
@@ -33,87 +41,123 @@ class OTPScreen extends StatelessWidget {
           ),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10.0),
-        child: ListView(
+      body: SingleChildScrollView(
+        child: Column(
           children: [
-            const SizedBox(
-              height: 10,
-            ),
-            const Center(
-              child: Text(
-                'Enter your verification code',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 40,
-                ),
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Expanded(
-              child: OTPTextField(
-                contentPadding: const EdgeInsets.all(20),
-                width: MediaQuery.of(context).size.width,
-                fieldWidth: 80,
-                style: TextStyle(
-                  fontSize: 25,
-                  color: kPrimaryColor,
-                ),
-                otpFieldStyle: OtpFieldStyle(
-                  borderColor: kPrimaryColor,
-                  enabledBorderColor: kPrimaryColor,
-                  focusBorderColor: kPrimaryColor,
-                ),
-                fieldStyle: FieldStyle.box,
-                onCompleted: _onOTPComplete,
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Text(
-              '04:59',
-              style: TextStyle(
-                color: kPrimaryColor,
-                fontSize: 18,
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            RichText(
-              text: TextSpan(
-                text: 'We have sent a verification code to your email ',
-                style: const TextStyle(
-                  color: Colors.black,
-                  fontSize: 22,
-                ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  TextSpan(
-                    text: 'day*****@gmail.com. ',
-                    style: TextStyle(color: kPrimaryColor),
+                  const SizedBox(
+                    height: 10,
                   ),
-                  const TextSpan(text: 'You can check your inbox '),
+                  const Text(
+                    'Enter your',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 40,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 15.0,
+                  ),
+                  const Text(
+                    'Verification Code',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 40,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 30.0,
+                  ),
+                  OTPTextField(
+                    contentPadding: const EdgeInsets.all(20.0),
+                    width: MediaQuery.of(context).size.width,
+                    fieldWidth: 80,
+                    style: TextStyle(
+                      fontSize: 25,
+                      color: kPrimaryColor,
+                    ),
+                    otpFieldStyle: OtpFieldStyle(
+                      borderColor: kPrimaryColor,
+                      enabledBorderColor: kPrimaryColor,
+                      focusBorderColor: kPrimaryColor,
+                    ),
+                    fieldStyle: FieldStyle.box,
+                    onCompleted: _onOTPComplete,
+                    onChanged: _onOTPChanged,
+                    keyboardType: TextInputType.number,
+                  ),
+                  const SizedBox(
+                    height: 50,
+                  ),
+                  Text(
+                    '04:59',
+                    style: TextStyle(
+                      color: kPrimaryColor,
+                      fontWeight: FontWeight.w700,
+                      fontSize: 20.0,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 30.0,
+                  ),
+                  RichText(
+                    text: TextSpan(
+                      text: 'We have sent a verification code to your email ',
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.w700,
+                        fontSize: 20.0,
+                      ),
+                      children: [
+                        TextSpan(
+                          text: 'day*****@gmail.com. ',
+                          style: TextStyle(
+                            color: kPrimaryColor,
+                            fontWeight: FontWeight.w700,
+                            fontSize: 20.0,
+                          ),
+                        ),
+                        const TextSpan(
+                          text: 'You can check your inbox ',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 20.0,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 30.0,
+                  ),
+                  Text(
+                    'I didn\'t receive the code? Send again',
+                    style: TextStyle(
+                      color: kPrimaryColor,
+                      fontWeight: FontWeight.w700,
+                      fontSize: 20.0,
+                      decoration: TextDecoration.underline,
+                    ),
+                  ),
                 ],
               ),
             ),
             const SizedBox(
-              height: 20,
+              height: 20.0,
             ),
-            Text(
-              'I didn\'t receive the code? Send again',
-              style: TextStyle(
-                color: kPrimaryColor,
-                fontSize: 20,
-                decoration: TextDecoration.underline,
-              ),
-            ),
-            const SizedBox(
-              height: 40,
-            ),
-            CustomButton(text: 'Verify', onTap: () {})
+            CustomButton(
+                text: 'Verify',
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const HomeScreen(),
+                    ),
+                  );
+                })
           ],
         ),
       ),

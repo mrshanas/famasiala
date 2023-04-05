@@ -21,24 +21,24 @@ class RegisterScreen extends StatelessWidget {
             child: Text(
               'Register',
               style: TextStyle(
-                fontWeight: FontWeight.w800,
+                fontWeight: FontWeight.w700,
                 fontSize: 30.0,
               ),
             ),
           ),
           const SizedBox(height: 15.0),
           const Padding(
-            padding: EdgeInsets.only(top: 10.0, left: 8.0),
+            padding: EdgeInsets.only(top: 10.0, left: 20.0),
             child: Text(
               'Let\'s get started',
               style: TextStyle(
-                fontWeight: FontWeight.w500,
+                fontWeight: FontWeight.w700,
                 fontSize: 25.0,
               ),
             ),
           ),
           const Padding(
-            padding: EdgeInsets.only(left: 8.0, bottom: 8.0),
+            padding: EdgeInsets.only(left: 20.0, bottom: 8.0),
             child: Text(
               'create an account',
               style: TextStyle(color: Colors.grey, fontSize: 17.5),
@@ -48,18 +48,21 @@ class RegisterScreen extends StatelessWidget {
             text: 'Fullname',
           ),
           const Input(
-            placeholder: 'Ex. Day Dreamer',
+            placeholder: 'Example Name',
+            keyboard: TextInputType.text,
           ),
           const InputLabel(
             text: 'Email',
           ),
           const Input(
-            placeholder: 'daydreamer@mrshanas.dev',
+            placeholder: 'example@domain.com',
+            keyboard: TextInputType.emailAddress,
           ),
 
           // A customer divider widget
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8.0),
+            padding: const EdgeInsets.only(
+                top: 10.0, right: 20.0, bottom: 10.0, left: 20.0),
             child: Row(
               children: [
                 Expanded(
@@ -74,8 +77,8 @@ class RegisterScreen extends StatelessWidget {
                 const Text(
                   'or',
                   style: TextStyle(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 22.0,
+                    fontWeight: FontWeight.w700,
+                    fontSize: 20.0,
                   ),
                 ),
                 Expanded(
@@ -95,6 +98,7 @@ class RegisterScreen extends StatelessWidget {
           ),
           const Input(
             placeholder: '+255 Phone number',
+            keyboard: TextInputType.phone,
           ),
 
           const SizedBox(
@@ -106,14 +110,10 @@ class RegisterScreen extends StatelessWidget {
             onTap: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) => const HomeScreen(),
+                  builder: (context) => const LoginScreen(),
                 ),
               );
             },
-          ),
-
-          const SizedBox(
-            height: 10.0,
           ),
 
           Row(
@@ -122,8 +122,8 @@ class RegisterScreen extends StatelessWidget {
               const Text(
                 'Already have an account? ',
                 style: TextStyle(
-                  fontWeight: FontWeight.w500,
-                  fontSize: 16.0,
+                  fontWeight: FontWeight.w700,
+                  fontSize: 17.0,
                 ),
               ),
               GestureDetector(
@@ -134,13 +134,23 @@ class RegisterScreen extends StatelessWidget {
                     ),
                   );
                 },
-                child: Text(
-                  'Login',
-                  style: TextStyle(
-                    color: kPrimaryColor,
-                    fontWeight: FontWeight.w500,
-                    fontSize: 16.0,
-                  ),
+                child: TextButton(
+                  child: (Text(
+                    'Login',
+                    style: TextStyle(
+                      color: kPrimaryColor,
+                      fontWeight: FontWeight.w700,
+                      fontSize: 17.0,
+                    ),
+                  )),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: ((context) => const LoginScreen()),
+                      ),
+                    );
+                  },
                 ),
               )
             ],

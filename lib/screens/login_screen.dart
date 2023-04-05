@@ -1,5 +1,7 @@
+import 'package:famasiala/screens/otp_screen.dart';
 import 'package:famasiala/screens/register_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 import 'package:famasiala/screens/home_screen.dart';
 import 'package:famasiala/widgets/buttons/button.dart';
@@ -30,11 +32,8 @@ class _LoginScreenState extends State<LoginScreen> {
       backgroundColor: Colors.white,
       body: ListView(
         children: [
-          Image.asset(
-            'assets/images/login_illustration.jpg',
-            height: 280,
-            width: double.infinity,
-          ),
+          Lottie.asset('assets/gifs/authgif.json',
+              height: 280, width: double.infinity),
           const SizedBox(
             height: 20,
           ),
@@ -42,8 +41,8 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Text(
               'Login',
               style: TextStyle(
-                fontSize: 24.0,
-                fontWeight: FontWeight.bold,
+                fontSize: 30.0,
+                fontWeight: FontWeight.w700,
               ),
             ),
           ),
@@ -51,12 +50,12 @@ class _LoginScreenState extends State<LoginScreen> {
             height: 20,
           ),
           const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 8.0),
+            padding: EdgeInsets.symmetric(horizontal: 20.0),
             child: Text(
               'Let\'s Get Started',
               style: TextStyle(
-                fontWeight: FontWeight.w500,
-                fontSize: 18.0,
+                fontWeight: FontWeight.w700,
+                fontSize: 25.0,
               ),
             ),
           ),
@@ -64,7 +63,7 @@ class _LoginScreenState extends State<LoginScreen> {
             height: 6,
           ),
           const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 8.0),
+            padding: EdgeInsets.symmetric(horizontal: 20.0),
             child: Text(
               'login to your account',
               style: TextStyle(color: Colors.grey, fontSize: 16.0),
@@ -74,21 +73,27 @@ class _LoginScreenState extends State<LoginScreen> {
             height: 10,
           ),
           const InputLabel(text: 'Email or Mobile'),
-          const Input(placeholder: 'daydreamer@mrshanas.dev'),
-          const InputLabel(text: 'Password'),
+          const Input(
+            placeholder: 'example@domain.com',
+            keyboard: TextInputType.emailAddress,
+          ),
+          const InputLabel(
+            text: 'Password',
+          ),
           Input(
-            placeholder: '********',
+            keyboard: TextInputType.text,
+            placeholder: '●●●●●●●●●●',
             password: _passwordVisible,
             suffixIcon: GestureDetector(
               onTap: _togglePasswordIcon,
               child: _passwordVisible
-                  ? const Icon(
+                  ?  Icon(
                       Icons.remove_red_eye,
-                      color: Colors.grey,
+                      color: kPrimaryColor,
                     )
-                  : const Icon(
+                  : Icon(
                       Icons.remove_red_eye_outlined,
-                      color: Colors.grey,
+                      color: kPrimaryColor,
                     ),
             ),
           ),
@@ -98,11 +103,12 @@ class _LoginScreenState extends State<LoginScreen> {
           const Align(
             alignment: Alignment.centerRight,
             child: Padding(
-              padding: EdgeInsets.only(right: 8.0),
+              padding: EdgeInsets.only(right: 20.0),
               child: Text(
                 'Forgot password?',
                 style: TextStyle(
-                  fontWeight: FontWeight.w600,
+                  fontWeight: FontWeight.w700,
+                  fontSize: 17.0,
                 ),
               ),
             ),
@@ -115,7 +121,7 @@ class _LoginScreenState extends State<LoginScreen> {
             onTap: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) => const HomeScreen(),
+                  builder: (context) => const OTPScreen(),
                 ),
               );
             },
@@ -126,8 +132,8 @@ class _LoginScreenState extends State<LoginScreen> {
               const Text(
                 'Don\'t have an account? ',
                 style: TextStyle(
-                  fontWeight: FontWeight.w500,
-                  fontSize: 16.0,
+                  fontWeight: FontWeight.w700,
+                  fontSize: 17.0,
                 ),
               ),
               GestureDetector(
@@ -138,13 +144,23 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   );
                 },
-                child: Text(
-                  'Register',
-                  style: TextStyle(
-                    color: kPrimaryColor,
-                    fontWeight: FontWeight.w500,
-                    fontSize: 16.0,
-                  ),
+                child: TextButton(
+                  child: (Text(
+                    'Register',
+                    style: TextStyle(
+                      color: kPrimaryColor,
+                      fontWeight: FontWeight.w700,
+                      fontSize: 17.0,
+                    ),
+                  )),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: ((context) => const RegisterScreen()),
+                      ),
+                    );
+                  },
                 ),
               )
             ],
