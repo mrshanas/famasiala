@@ -1,3 +1,4 @@
+import 'package:famasiala/screens/otp_screen.dart';
 import 'package:famasiala/screens/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
@@ -120,7 +121,7 @@ class _LoginScreenState extends State<LoginScreen> {
             onTap: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) => const HomeScreen(),
+                  builder: (context) => const OTPScreen(),
                 ),
               );
             },

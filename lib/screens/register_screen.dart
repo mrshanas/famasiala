@@ -110,7 +110,7 @@ class RegisterScreen extends StatelessWidget {
             onTap: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) => const HomeScreen(),
+                  builder: (context) => const LoginScreen(),
                 ),
               );
             },
