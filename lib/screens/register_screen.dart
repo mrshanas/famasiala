@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:famasiala/screens/home_screen.dart';
 import 'package:famasiala/screens/login_screen.dart';
 import 'package:famasiala/utils/constants.dart';
 import 'package:famasiala/widgets/buttons/button.dart';

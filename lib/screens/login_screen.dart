@@ -3,7 +3,7 @@ import 'package:famasiala/screens/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
-import 'package:famasiala/screens/home_screen.dart';
+
 import 'package:famasiala/widgets/buttons/button.dart';
 import 'package:famasiala/widgets/inputs/input.dart';
 import 'package:famasiala/widgets/inputs/input_label.dart';
